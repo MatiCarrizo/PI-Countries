@@ -1,0 +1,25 @@
+.input {
+    border-radius: 3px;
+    border: rgb(58, 33, 33);
+    background-color: white;
+    color: rgb(58, 33, 33);
+    font-family: 'Noto Serif', serif;
+    font-size: 18px;
+    margin: 3px;
+}
+
+.button{
+    border-radius: 3px;
+    border: rgb(58, 33, 33);
+    background-color: #F4E2CB;
+    color: rgb(58, 33, 33);
+    font-family: 'Noto Serif', serif;
+    font-size: 18px;
+    margin: 3px;
+}
+
+.button:hover {
+    border: #F4E2CB;
+    background-color: rgb(58, 33, 33);
+    color: #F4E2CB;
+}

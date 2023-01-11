@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     difficulty: {
-      type: DataTypes.STRING(5),
+      type: DataTypes.ENUM('1', '2', '3', '4', '5'),
     },
     duration: {
       type: DataTypes.TIME,

@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     try {
         if(!name) {
             console.log('Entro al if');
-            await dbData.map(e => countryList.push(e.name));
+            await dbData.map(e => countryList.push({id:e.id, name: e.name, continent: e.continent, flag_image: e.flag_image, population: e.population}));
             return res.status(200).json(countryList);
         }
         else {

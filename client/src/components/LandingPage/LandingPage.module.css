@@ -1,0 +1,63 @@
+.conteiner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subConteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(2.5rem, 1rem + 10vw, 4rem);
+    font-weight: 500;
+    font-family: "Rubik", sans-serif;
+    color: #f5efe8;
+    margin-bottom: 5%;
+}
+
+.btnStart {
+    cursor: pointer;
+    padding: 8px 25px;
+    border-radius: 15px;
+    border-color: #F4E2CB;
+    color: rgb(58, 33, 33);
+    z-index: 1;
+    background: #F4E2CB;
+    position: relative;
+    font-weight: 1000;
+    font-size: 18px;
+}
+
+.btnStart:hover {
+    color: #F4E2CB;
+    background: rgb(58, 33, 33);
+    border-color: rgb(58, 33, 33);
+    transform: scale(1.1);
+}
+
+.links {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.linkedin {
+    max-height: 30px;
+    background-color: rgb(58, 33, 33);
+    border-radius: 100%;
+    padding: 8px;
+}
+
+.github {
+    max-height: 30px;
+    background-color: rgb(58, 33, 33);
+    border-radius: 100%;
+    padding: 8px;
+    margin-left: 10px;
+}
+

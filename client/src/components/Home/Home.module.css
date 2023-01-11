@@ -1,0 +1,56 @@
+.button{
+    border-radius: 3px;
+    border: rgb(58, 33, 33);
+    background-color: #F4E2CB;
+    color: rgb(58, 33, 33);
+    font-family: 'Noto Serif', serif;
+    font-size: 18px;
+    margin: 3px;
+}
+
+.button:hover {
+    border: #F4E2CB;
+    background-color: rgb(58, 33, 33);
+    color: #F4E2CB;
+}
+
+.conteiner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1%;
+    padding: 5px;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+
+.filters {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 1%;
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.cards {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    position: relative;
+    margin-top: 5%;
+}
+
+.paginado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}
