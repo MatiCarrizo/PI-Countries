@@ -24,7 +24,7 @@
     padding: 8px 25px;
     border-radius: 15px;
     border-color: #F4E2CB;
-    color: rgb(58, 33, 33);
+    color: rgb(51, 21, 21);
     z-index: 1;
     background: #F4E2CB;
     position: relative;
@@ -34,8 +34,8 @@
 
 .btnStart:hover {
     color: #F4E2CB;
-    background: rgb(58, 33, 33);
-    border-color: rgb(58, 33, 33);
+    background: rgb(51, 21, 21);
+    border-color: rgb(51, 21, 21);
     transform: scale(1.1);
 }
 
@@ -48,14 +48,14 @@
 
 .linkedin {
     max-height: 30px;
-    background-color: rgb(58, 33, 33);
+    background-color: rgb(51, 21, 21);
     border-radius: 100%;
     padding: 8px;
 }
 
 .github {
     max-height: 30px;
-    background-color: rgb(58, 33, 33);
+    background-color: rgb(51, 21, 21);
     border-radius: 100%;
     padding: 8px;
     margin-left: 10px;

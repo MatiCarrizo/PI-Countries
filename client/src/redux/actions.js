@@ -35,12 +35,12 @@ export const createActivity = (payload) => {
 
 export const searchCountry = (payload) => {
     return async (dispatch) => {
-        let info = await axios.get(`/countries?name=${payload}`);
-        return dispatch({ type: 'SEARCH_COUNTRY', payload: info.data })
-        // try {
-        // } catch (error) {
-        //     console.log('Error al buscar pais', error);
-        // }
+        try {
+            let info = await axios.get(`/countries?name=${payload}`);
+            return dispatch({ type: 'SEARCH_COUNTRY', payload: info.data })
+        } catch (error) {
+            console.log('Error al buscar pais', error);
+        }
     }
 }
 

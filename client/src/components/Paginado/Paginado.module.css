@@ -16,14 +16,23 @@
     height: 20px;
     width: 20px;
     border-radius: 3px;
-    border: rgb(58, 33, 33);
+    border: rgb(51, 21, 21);
     background-color: #F4E2CB;
-    color: rgb(58, 33, 33);
+    color: rgb(51, 21, 21);
     font-family: 'Noto Serif', serif;
+    font-weight: 600;
 }
 
 .number:hover {
     border: #F4E2CB;
-    background-color: rgb(58, 33, 33);
+    background-color: rgb(51, 21, 21);
     color: #F4E2CB;
 }
+
+.number:focus {
+    border: #F4E2CB;
+    background-color: rgb(97, 31, 31);
+    color: #F4E2CB;
+    scale: 1.2;
+}
+

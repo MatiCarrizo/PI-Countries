@@ -1,21 +1,24 @@
 .input {
-    border-radius: 3px;
-    border: rgb(58, 33, 33);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border: rgb(51, 21, 21);
     background-color: white;
-    color: rgb(58, 33, 33);
+    color: rgb(51, 21, 21);
     font-family: 'Noto Serif', serif;
-    font-size: 18px;
-    margin: 3px;
+    font-size: 20px;
+    font-weight: 600;
+    
 }
 
 .button{
-    border-radius: 3px;
-    border: rgb(58, 33, 33);
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border: rgb(51, 21, 21);
     background-color: #F4E2CB;
-    color: rgb(58, 33, 33);
+    color: rgb(51, 21, 21);
     font-family: 'Noto Serif', serif;
-    font-size: 18px;
-    margin: 3px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .button:hover {

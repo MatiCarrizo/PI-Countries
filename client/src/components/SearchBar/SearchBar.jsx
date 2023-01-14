@@ -23,8 +23,8 @@ const SearchBar = () => {
 
     return (
         <div>
-            <input className={SearchStyles.input} type='text' placeholder='Search Country...' onChange={handleChange}/>
-            <button className={SearchStyles.button} type='submit' onClick={() => handleSubmit()}>Search</button>
+            <input className={SearchStyles.input} type='text' placeholder=' Search Country...' onChange={(e) => handleChange(e)}/>
+            <button className={SearchStyles.button} type='submit' onClick={(e) => handleSubmit(e)}>Search</button>
         </div>
     )
 }

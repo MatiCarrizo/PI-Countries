@@ -8,6 +8,8 @@ import Paginado from '../Paginado/Paginado';
 import HomeStyles from './Home.module.css';
 import { getCountries, getCountryDetail, createActivity, searchCountry, ordeByName, orderByPopulation, filterByContinent, filterByActivity } from '../../redux/actions';
 
+import linkedin from '../../img/linkedin.png';
+import github from '../../img/github.png';
 
 
 const Home = () => {
@@ -55,67 +57,80 @@ const Home = () => {
 
     return (
         <div>
+            <h1 className={HomeStyles.title}>Countries PI</h1>
             {/* ---------Barra superior--------- */}
-            <div className={HomeStyles.conteiner}>
-                <div>
-                    <Link to= '/'>
-                        <button className={HomeStyles.button} id= 'back'>Landing</button>
-                    </Link>
-                    <Link to= '/createActivity'>
-                        <button className={HomeStyles.button} id= 'create'>Create Activity</button>
-                    </Link>
-                    <button className={HomeStyles.button} onClick={(e) => handleClick(e)} id= 'reload'>Reload</button>
-                </div>
+            <div className={HomeStyles.searchBar}>
                 <div>
                     <SearchBar/>
                 </div>
             </div>
-            
-            <div div className={HomeStyles.filters}>
-                {/* ---------Ordenamiento por nombre--------- */}
-                <select onChange={(e) => handleOrderByName(e)}>
-                    <option value='ascName'>Nombre Ascendente</option>
-                    <option value='descName'>Nombre Descendente</option>
-                </select>
 
-                {/* ---------Ordenamiento por Poblacion--------- */}
-                <select onChange={(e) => handleOrderByPopulation(e)}>
-                    <option value='ascPopulation'>Poblacion Ascendente</option>
-                    <option value='descPopulation'>Poblacion Descendente</option>
-                </select>
+                <div className={HomeStyles.bigConteiner}>
+                    <div className={HomeStyles.conteiner}>
+                        <Link to= '/'>
+                            <button className={HomeStyles.button} id= 'back'>Landing</button>
+                        </Link>
+                        <Link to= '/createActivity'>
+                            <button className={HomeStyles.button} id= 'create'>Create Activity</button>
+                        </Link>
+                        <button className={HomeStyles.button} onClick={(e) => handleClick(e)} id= 'reload'>Reload</button>
+                    </div>
+                    <div className={HomeStyles.filters}>
+                        <h3>Filters</h3>
+                        {/* ---------Ordenamiento por nombre--------- */}
+                        <div className={HomeStyles.orderN}>
+                            <select onChange={(e) => handleOrderByName(e)}>
+                                <option value='ascName'>A - Z</option>
+                                <option value='descName'>Z - A</option>
+                            </select>
+                        </div>
 
-                {/* ---------Filtrado por Continente--------- */}
-                <select onChange={(e) => handleFilterContinent(e)}>
-                    <option value='All'>All</option>
-                    <option value='Africa'>Africa</option>
-                    <option value='Antarctica'>Anctartica</option>
-                    <option value='Asia'>Asia</option>
-                    <option value='Europe'>Europe</option>
-                    <option value='North America'>North America</option>
-                    <option value='Oceania'>Oceania</option>
-                    <option value='South America'>South America</option>
-                </select>
+                        {/* ---------Ordenamiento por Poblacion--------- */}
+                        <div className={HomeStyles.orderN}>
+                            <select onChange={(e) => handleOrderByPopulation(e)}>
+                                <option value='ascPopulation'>Population Low-High</option>
+                                <option value='descPopulation'>Population High-Low</option>
+                            </select>
+                        </div>
 
-                {/* ---------Filtrado por Actividades--------- */}
-                <select>
-                    <option value='sky'>Sky</option>
-                    <option value='kayak'>Kayak</option>
-                    <option value='mountaineering'>Mountaineering</option>
-                    <option value='trekking'>Trekking</option>
-                </select>
-            </div>
+                        {/* ---------Filtrado por Continente--------- */}
+                        <div className={HomeStyles.orderN}>
+                            <select onChange={(e) => handleFilterContinent(e)}>
+                                <option value='All'>All Continents</option>
+                                <option value='Africa'>Africa</option>
+                                <option value='Antarctica'>Anctartica</option>
+                                <option value='Asia'>Asia</option>
+                                <option value='Europe'>Europe</option>
+                                <option value='North America'>North America</option>
+                                <option value='Oceania'>Oceania</option>
+                                <option value='South America'>South America</option>
+                            </select>
+                        </div>
 
-            {/* ---------Country Cards--------- */}
-            <div className={HomeStyles.cards}>
-                {currentCountries.map((el) => (
-                    <CountryCards
-                        id = {el.id}
-                        name = {el.name}
-                        flag_image = {el.flag_image}
-                        continent = {el.continent}
-                    />
-                ))}
-            </div>
+                        {/* ---------Filtrado por Actividades--------- */}
+                        <div className={HomeStyles.orderN}>
+                            <select>
+                                <option value='sky'>Sky</option>
+                                <option value='kayak'>Kayak</option>
+                                <option value='mountaineering'>Mountaineering</option>
+                                <option value='trekking'>Trekking</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {/* ---------Country Cards--------- */}
+                <div className={HomeStyles.cards}>
+                    {currentCountries.map((el) => (
+                        <CountryCards
+                            id = {el.id}
+                            name = {el.name}
+                            flag_image = {el.flag_image}
+                            continent = {el.continent}
+                            population = {el.population}
+                        />
+                    ))}
+                </div>
 
             {/* ---------Paginado--------- */}
             <div className={HomeStyles.paginado}>
@@ -124,6 +139,26 @@ const Home = () => {
                 allCountries={allCountries.length}
                 paginado={paginado}
                 />
+            </div>
+
+            {/* ---------Linkedin y Github--------- */}
+            <div className={HomeStyles.links}>
+                <a
+                    href="https://www.linkedin.com/in/matias-carrizo-a9751b121/"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <img src={linkedin} alt="linkedin" className={HomeStyles.linkedin} />
+                </a>
+
+                <a
+                    href="https://github.com/MatiCarrizo"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    {" "}
+                    <img src={github} alt="github" className={HomeStyles.github} />
+                </a>
             </div>
         </div>
     )
