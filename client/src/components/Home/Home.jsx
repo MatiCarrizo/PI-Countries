@@ -6,7 +6,7 @@ import CountryCards from '../CountryCards/CountryCards';
 import SearchBar from '../SearchBar/SearchBar';
 import Paginado from '../Paginado/Paginado';
 import HomeStyles from './Home.module.css';
-import { getCountries, getCountryDetail, createActivity, searchCountry, ordeByName, orderByPopulation, filterByContinent, filterByActivity } from '../../redux/actions';
+import { getActivities, getCountries, ordeByName, orderByPopulation, filterByContinent, filterByActivity } from '../../redux/actions';
 
 import linkedin from '../../img/linkedin.png';
 import github from '../../img/github.png';
@@ -15,6 +15,7 @@ import github from '../../img/github.png';
 const Home = () => {
     const dispatch = useDispatch();
     const allCountries = useSelector((state) => state.countries);
+    const allActivities = useSelector((state) => state.activities);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [countriesPerPage, setCountriesPerPage] = useState(10);
@@ -32,6 +33,10 @@ const Home = () => {
         dispatch(getCountries())
     }, [dispatch]);
 
+    useEffect(() => {
+        dispatch(getActivities())
+    }, [dispatch]);
+
     const handleClick = (e) => {
         e.preventDefault();
         dispatch(getCountries());
@@ -39,6 +44,10 @@ const Home = () => {
 
     const handleFilterContinent = (e) => {
         dispatch(filterByContinent(e.target.value));
+    }
+
+    const handleFilterActivity = (e) => {
+        dispatch(filterByActivity(e.target.value));
     }
 
     const handleOrderByName = (e) => {
@@ -78,23 +87,25 @@ const Home = () => {
                     <div className={HomeStyles.filters}>
                         <h3>Filters</h3>
                         {/* ---------Ordenamiento por nombre--------- */}
-                        <div className={HomeStyles.orderN}>
+                        <div className={HomeStyles.divSelect}>
                             <select onChange={(e) => handleOrderByName(e)}>
+                                <option value="" disabled selected>Name</option>
                                 <option value='ascName'>A - Z</option>
                                 <option value='descName'>Z - A</option>
                             </select>
                         </div>
 
                         {/* ---------Ordenamiento por Poblacion--------- */}
-                        <div className={HomeStyles.orderN}>
+                        <div className={HomeStyles.divSelect}>
                             <select onChange={(e) => handleOrderByPopulation(e)}>
+                                <option value="" disabled selected>Population</option>
                                 <option value='ascPopulation'>Population Low-High</option>
                                 <option value='descPopulation'>Population High-Low</option>
                             </select>
                         </div>
 
                         {/* ---------Filtrado por Continente--------- */}
-                        <div className={HomeStyles.orderN}>
+                        <div className={HomeStyles.divSelect}>
                             <select onChange={(e) => handleFilterContinent(e)}>
                                 <option value='All'>All Continents</option>
                                 <option value='Africa'>Africa</option>
@@ -108,12 +119,14 @@ const Home = () => {
                         </div>
 
                         {/* ---------Filtrado por Actividades--------- */}
-                        <div className={HomeStyles.orderN}>
-                            <select>
-                                <option value='sky'>Sky</option>
-                                <option value='kayak'>Kayak</option>
-                                <option value='mountaineering'>Mountaineering</option>
-                                <option value='trekking'>Trekking</option>
+                        <div className={HomeStyles.divSelect}>
+                            <select onChange={(e) => handleFilterActivity(e)}>
+                                <option value="allActivities" disabled selected>Activity</option>
+                                {allActivities && allActivities.map((e) => {
+                                    return (
+                                        <option value={e}>{e}</option>
+                                    )
+                                })}
                             </select>
                         </div>
                     </div>

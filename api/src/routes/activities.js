@@ -19,3 +19,14 @@ router.post('/', async (req, res) => {
         return res.status(400).send(error);
     }
 });
+
+router.get('/', async (req, res) => {
+    const dbActivities = await Activity.findAll();
+    let activitiesList = [];
+    try {
+        await dbActivities.map( e => activitiesList.push(e.name));
+        res.status(200).json(activitiesList);
+    } catch (error) {
+        return res.status(400).send(error);
+    }
+})

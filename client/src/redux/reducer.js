@@ -1,4 +1,5 @@
 import {
+    GET_ACTIVITIES,
     GET_COUNTRIES,
     GET_COUNTRY_DETAIL,
     CREATE_ACTIVITY,
@@ -13,10 +14,15 @@ const initialState = {
     countries: [],
     allCountries: [],
     countryDetail: {},
+    activities: [],
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        // -------------------------------------------------------------------------------
+        case GET_ACTIVITIES:
+            return { ...state, activities: action.payload };
+
         // -------------------------------------------------------------------------------
         case GET_COUNTRIES:
             return { ...state, countries: action.payload, allCountries: action.payload };
@@ -88,9 +94,14 @@ const rootReducer = (state = initialState, action) => {
         // ----------------------------------------------------------------------------------
 
         case FILTER_BY_ACTIVITY:
-            const createdActivity = action.payload
-            return {}
+            const acts = state.activities;
+            const activityFiltered = acts.length && action.payload === 'allActivities' ? state.allCountries : state.allCountries.filter(el => el.activities.find(e => e === action.payload))
+            return {
+                ...state,
+                countries: activityFiltered
+            }
 
+            
         // ----------------------------------------------------------------------------------
 
         default:

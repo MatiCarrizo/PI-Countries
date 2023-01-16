@@ -1,6 +1,7 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3001';
 
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
@@ -10,6 +11,12 @@ export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const ORDER_BY_POPULATION = 'ORDER_BY_POPULATION';
 
+export const getActivities = () => {
+    return async (dispatch) => {
+        let info = await axios.get('/activities');
+        return dispatch({ type: GET_ACTIVITIES, payload: info.data });
+    }
+}
 
 export const getCountries = () => {
     return async (dispatch) => {
@@ -71,7 +78,7 @@ export const filterByContinent = (payload) => {
 
 export const filterByActivity = (payload) => {
     return {
-        type: 'FILTER_BY_ACTIVITY',
+        type:'FILTER_BY_ACTIVITY',
         payload
     }
 }

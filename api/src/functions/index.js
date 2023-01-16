@@ -73,11 +73,4 @@ const createActivity = async (name, difficulty, duration, season, countryId) => 
     }
 };
 
-// const getAllCountries = async () => {
-//     const apiInfo = await getApiInfo();
-//     const dbInfo = await getDbInfo();
-//     const infoTotal = [...apiInfo, ...dbInfo];
-//     return infoTotal;
-// };
-
 module.exports = { getApiInfo, addCountriesToDb, getDbInfo, createActivity };

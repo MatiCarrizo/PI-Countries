@@ -27,6 +27,7 @@
     border: #F4E2CB;
     background-color: rgb(51, 21, 21);
     color: #F4E2CB;
+    cursor: pointer;
 }
 
 .number:focus {

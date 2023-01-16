@@ -1,15 +1,10 @@
 .divCard {
-    /* display: flow-root;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
     border-radius: 15px;
     height:200px;
     width: 230px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    /* box-shadow: 0 4px 8px 0 rgba(250, 249, 249, 0.418), 0 6px 20px 0 rgba(248, 248, 248, 0.534); */
     background-color: rgba(45, 33, 33, 0.637);
     color: #f5efe8;
 }
@@ -24,7 +19,6 @@
 .divTitles {
     display: flex;
     justify-content: right;
-    /* align-items: center; */
     position: relative;
     width: 120px;
     top: 5px;
@@ -36,7 +30,6 @@
 .divImg {
     display: flex;
     justify-content: left;
-    /* align-items: center; */
     position: relative;
     top: 20px;
     left: 10px;

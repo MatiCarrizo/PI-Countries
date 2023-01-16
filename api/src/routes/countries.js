@@ -16,23 +16,16 @@ const router = Router();
 router.get('/', async (req, res) => {
     const {name} = req.query;
     addCountriesToDb();
-    const dbData = await Country.findAll();
+    //const dbData = await Country.findAll();
+    const dbData = await getDbInfo();
     let countryList = [];
     
     try {
         if(!name) {
-            console.log('Entro al if');
-            await dbData.map(e => countryList.push({id:e.id, name: e.name, continent: e.continent, flag_image: e.flag_image, population: e.population}));
+            await dbData.map(e => countryList.push({id:e.id, name: e.name, continent: e.continent, flag_image: e.flag_image, population: e.population, activities: e.activities.map(el => el.name)}));
             return res.status(200).json(countryList);
         }
         else {
-            // const filteredCountry = await Country.findAll({
-            //     where: {
-            //         name: {
-            //             [Op.iLike]: '%' + name + '%'
-            //         }
-            //     }
-            // });
             const filteredCountry = dbData.filter(ele => ele.name.toLowerCase().includes(name.toLowerCase()));
             return filteredCountry.length? res.status(200).json(filteredCountry): res.status(400).send('Country not found');
         }

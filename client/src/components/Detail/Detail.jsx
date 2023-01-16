@@ -14,12 +14,6 @@ const Detail = (props) => {
     dispatch(getCountryDetail(props.match.params.id));
   }, [dispatch]);
 
-  // const params = useParams();
-
-  // useEffect(() => {
-  //     dispatch(getCountryDetail(params.id));
-  //   }, [params.id]);
-
   const myCountry = useSelector((state) => state.countryDetail);
 
   console.log(myCountry);
@@ -33,24 +27,25 @@ const Detail = (props) => {
       </div>
       {
         myCountry.length > 0 ?
-        <div>
-          <div>
-            <h1>Country: {myCountry[0].name}</h1>
+        <div className={DetailStyles.divSubcontainer}>
+          <div className={DetailStyles.divCountry}>
+            <h1>{myCountry[0].name}</h1>
+            <img src={myCountry[0].flag_image} alt="Country" height="150px"/>
+            <h3>ID: {myCountry[0].id}</h3>
             <h3>Continent: {myCountry[0].continent}</h3>
             <h3>Capital: {myCountry[0].capital}</h3>
             <h3>Subregion: {myCountry[0].subregion}</h3>
-            <h3>Area: {myCountry[0].area}</h3>
+            <h3>Area: {myCountry[0].area} Km2</h3>
             <h3>Population: {myCountry[0].population}</h3>
-            <img src={myCountry[0].flag_image} alt="Country" height="300px"/>
           </div>
-          <div>
+          <div className={DetailStyles.cardActivity}>
             {
               myCountry[0].activities.map((e) => (
-                <div>
-                  <h4>Activity: {e.name}</h4>
-                  <h5>Difficulty: {e.difficulty}</h5>
-                  <h5>Duration: {e.duration}</h5>
-                  <h5>Season: {e.season}</h5>
+                <div className={DetailStyles.divActivity}>
+                  <h3>Activity: {e.name}</h3>
+                  <h4>Difficulty: {e.difficulty}</h4>
+                  <h4>Duration: {e.duration}</h4>
+                  <h4>Season: {e.season}</h4>
                 </div>
               ))}
           </div>

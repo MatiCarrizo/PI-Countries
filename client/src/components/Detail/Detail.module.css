@@ -24,3 +24,45 @@
     padding: 5px;
     top: 5px;
 }
+
+.divSubcontainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.divCountry {
+    border-radius: 15px;
+    height:580px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    background-color: rgba(45, 33, 33, 0.637);
+    color: #f5efe8;
+    margin-right: 5%;
+}
+
+.cardActivity {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    position: relative;
+    margin-top: 30px;
+    
+}
+
+.divActivity {
+    border-radius: 15px;
+    height:190px;
+    width: 200px;
+    background-color: rgba(45, 33, 33, 0.637);
+    color: #f5efe8;
+    margin-right: 10px;
+}

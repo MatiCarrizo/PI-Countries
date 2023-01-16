@@ -16,15 +16,6 @@ const Paginado = ({countriesPerPage, allCountries, paginado}) => {
                 ))}
             </div>
         </div>
-        // <nav>
-        //     <ul className={PagStyles.list}>
-        //         {pageNumbers?.map(number => (
-        //             <li className={PagStyles.number} key={number}>
-        //                 <a onClick={() => paginado(number)}>{number}</a>
-        //             </li>
-        //         ))}
-        //     </ul>
-        // </nav>
     )
 }
 
