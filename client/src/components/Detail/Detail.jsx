@@ -44,7 +44,7 @@ const Detail = (props) => {
                 <div className={DetailStyles.divActivity}>
                   <h3>Activity: {e.name}</h3>
                   <h4>Difficulty: {e.difficulty}</h4>
-                  <h4>Duration: {e.duration}</h4>
+                  <h4>Duration: {e.duration} hr</h4>
                   <h4>Season: {e.season}</h4>
                 </div>
               ))}

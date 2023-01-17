@@ -18,15 +18,25 @@ const Home = () => {
     const allActivities = useSelector((state) => state.activities);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage, setCountriesPerPage] = useState(10);
-    const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+    // const [countriesPerPage, setCountriesPerPage] = useState(10);
+    // const indexOfLastCountry = currentPage * countriesPerPage;
+    // const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    // const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
+    const [countriesPageOne, setCountriesPageOne] = useState(9);
+    const [countriesPageLast, setCountriesPageLast] = useState(10);
+
+    const [countriesPerPage, setCountriesPerPage] = useState(9);
+    const indexOfLastCountry = currentPage === 1 ? currentPage * countriesPerPage + 1 : currentPage * countriesPerPage;
+    const indexOfFirstCountry = currentPage === 1 ? 0 : currentPage * countriesPerPage - 11;
+    const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry - 1);
+    
     const [order, setOrder] = useState("");
 
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
+        if (pageNumber === 1) setCountriesPerPage(9);
+        else setCountriesPerPage(10);
     }
 
     useEffect(() => {
@@ -135,7 +145,7 @@ const Home = () => {
                 {/* ---------Country Cards--------- */}
                 <div className={HomeStyles.cards}>
                     {currentCountries.map((el) => (
-                        <CountryCards
+                        <CountryCards 
                             id = {el.id}
                             name = {el.name}
                             flag_image = {el.flag_image}
@@ -148,9 +158,11 @@ const Home = () => {
             {/* ---------Paginado--------- */}
             <div className={HomeStyles.paginado}>
                 <Paginado
-                countriesPerPage={countriesPerPage}
+                countriesPerPage={countriesPageLast}
+                // countriesPerPage={countriesPerPage}
                 allCountries={allCountries.length}
                 paginado={paginado}
+                countriesPageOne={countriesPageOne}
                 />
             </div>
 

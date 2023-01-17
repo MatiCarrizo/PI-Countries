@@ -10,9 +10,11 @@ const reload = () => {
     window.location.reload(false);
 }
 
+
+
 const validate = (input) => {
     let errors = {};
-    if (!input.name || !/^[a-zA-Z\s]*$/.test(input.name) || input.name.length < 3) errors.name = 'Name of activity is required o invalid';
+    if (!input.name || !/^[a-zA-Z\s]*$/.test(input.name) || input.name.length < 3 || input.name.length >= 25) errors.name = 'Has to contain at least 3 letters, at most 25 letters and must be all letters'; //Name of activity is required o invalid
     if (!input.difficulty) errors.difficulty = 'Difficulty is required';
     if (!input.duration) errors.duration = 'Duration is required';
     if (!input.season) errors.season = 'Season is required';
@@ -116,8 +118,10 @@ const CreateActivity = () => {
                             <div className={ActivityStyles.divSelect}>
                                 <label>Name: </label>
                                 <input onChange={handleChange} type="text" value={input.name} name='name' placeholder="Activity name"/>
+                            </div >
+                            <div className={ActivityStyles.errorDetail}>
+                                {errors.name && <p className={ActivityStyles.errorDetailName}>{errors.name}</p>}
                             </div>
-                            {errors.name && <p className={ActivityStyles.errorDetail}>{errors.name}</p>}
                         </div>
 
                         <div>
@@ -132,7 +136,9 @@ const CreateActivity = () => {
                                     <option value="5">5</option>
                                 </select>
                             </div>
-                            {errors.difficulty && <p className={ActivityStyles.errorDetail}>{errors.difficulty}</p>}
+                            <div className={ActivityStyles.errorDetail}>
+                                {errors.difficulty && <p>{errors.difficulty}</p>}
+                            </div>
                         </div>
 
                         <div>
@@ -140,7 +146,9 @@ const CreateActivity = () => {
                                 <label>Duration: </label>
                                 <input onChange={handleChange} type="time" value={input.duration} name='duration' placeholder="Duration"/>
                             </div>
-                            {errors.duration && <p className={ActivityStyles.errorDetail}>{errors.duration}</p>}
+                            <div className={ActivityStyles.errorDetail}>
+                                {errors.duration && <p>{errors.duration}</p>}
+                            </div>
                         </div>
 
                         <div>
@@ -154,7 +162,9 @@ const CreateActivity = () => {
                                     <option value="Spring">Spring</option>
                                 </select>
                             </div>
-                            {errors.season && <p className={ActivityStyles.errorDetail}>{errors.season}</p>}
+                            <div className={ActivityStyles.errorDetail}>
+                                {errors.season && <p>{errors.season}</p>}
+                            </div>
                         </div>
 
                         <div>
@@ -167,8 +177,16 @@ const CreateActivity = () => {
                                     ))}
                                 </select>
                             </div>
-                            {errors.countryId && <p className={ActivityStyles.errorDetail}>{errors.countryId}</p>}
-                            <ul><p>{input.countryId.map(e => e + ', ')}</p></ul>
+                            <div className={ActivityStyles.errorDetail}>
+                                {errors.countryId && <p className={ActivityStyles.errorCountry}>{errors.countryId}</p>}
+                            </div>
+                            {/* <ul><p>{input.countryId.map(e => e + ', ')}</p></ul> */}
+                            <ul className={ActivityStyles.nameDetail}><p>{input.countryId.map(e => countriesName.map(el => {
+                                if (el.id === e) { 
+                                    console.log(el.name);
+                                    return el.name + ', ';
+                                }
+                            }))}</p></ul>
                         </div>
 
                     </div>
@@ -179,7 +197,7 @@ const CreateActivity = () => {
                 </form>
             </div>
             <div>
-                <button className={ActivityStyles.button} type="submit" onClick={reload}>Reload</button>
+                <button className={ActivityStyles.button} onClick={reload}>Reload</button>
             </div>
         </div>
     )

@@ -33,11 +33,12 @@
     font-family: 'Noto Serif', serif;
     font-size: 20px;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .form {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
@@ -49,6 +50,14 @@
     font-family: 'Noto Serif', serif;
     font-size: 18px;
     font-weight: 600;
+}
+
+.errorDetailName {
+    width: 260px;
+}
+
+.errorCountry {
+    width: 400px;
 }
 
 .buttonCreate{
@@ -134,4 +143,8 @@
 .divSelect input:hover{
     background: rgb(51, 21, 21);
 	color: #f0f0f0;
+}
+
+.nameDetail {
+    width: 350px;
 }
