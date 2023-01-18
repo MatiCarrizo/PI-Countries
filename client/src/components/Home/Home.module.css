@@ -5,7 +5,7 @@
     left: 20px;
     line-height: 0%;
     color: #f5efe8;
-    font-family: 'Noto Serif', serif;
+    font-family: "Rubik", sans-serif;
     font-size: 35px;
 }
 
@@ -108,7 +108,18 @@
 	color: #f0f0f0;
 }
 
-.cards {
+.divCards {
+    display: flex;
+    justify-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 178px;
+    width: 86%;
+    height: auto;
+}
+
+/* .cards {
     display: grid;
     justify-items: center;
     justify-content: center;
@@ -119,6 +130,14 @@
     position: relative;
     margin-top: 50px;
     margin-left: 178px;
+} */
+
+.cards {
+    display: flex;
+    justify-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .paginado {
@@ -126,9 +145,8 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 100%;
+    padding: 1%;
+    width: 98%;
     bottom: 1%;
 }
 

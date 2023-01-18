@@ -18,10 +18,6 @@ const Home = () => {
     const allActivities = useSelector((state) => state.activities);
 
     const [currentPage, setCurrentPage] = useState(1);
-    // const [countriesPerPage, setCountriesPerPage] = useState(10);
-    // const indexOfLastCountry = currentPage * countriesPerPage;
-    // const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-    // const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
     const [countriesPageOne, setCountriesPageOne] = useState(9);
     const [countriesPageLast, setCountriesPageLast] = useState(10);
@@ -142,7 +138,8 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* ---------Country Cards--------- */}
+            {/* ---------Country Cards--------- */}
+            <div className={HomeStyles.divCards}>
                 <div className={HomeStyles.cards}>
                     {currentCountries.map((el) => (
                         <CountryCards 
@@ -154,6 +151,7 @@ const Home = () => {
                         />
                     ))}
                 </div>
+            </div>
 
             {/* ---------Paginado--------- */}
             <div className={HomeStyles.paginado}>
@@ -185,6 +183,7 @@ const Home = () => {
                     <img src={github} alt="github" className={HomeStyles.github} />
                 </a>
             </div>
+
         </div>
     )
 }

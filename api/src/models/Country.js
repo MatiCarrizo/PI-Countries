@@ -36,16 +36,9 @@ module.exports = (sequelize) => {
     },
     population: {
       type: DataTypes.STRING,
-    },
-    // createdInDb: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    //   defaultValue: true,
-    // },
+    }
   },{
-    // charset: 'utf8',
-    // collate: 'utf8_general_ci', 
-    timestamps: false,
+    timestamps: false
   });
 };
 

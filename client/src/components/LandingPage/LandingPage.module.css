@@ -15,7 +15,8 @@
     font-size: clamp(2.5rem, 1rem + 10vw, 4rem);
     font-weight: 500;
     font-family: "Rubik", sans-serif;
-    color: #f5efe8;
+    /* color: #f5efe8; */
+    color: rgb(51, 21, 21);
     margin-bottom: 5%;
     font-weight: 550;
 }
