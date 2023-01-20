@@ -49,7 +49,7 @@ const Detail = (props) => {
                 </div>
               ))}
           </div>
-        </div> : <p>Loading...</p>
+        </div> : <p className={DetailStyles.divLoading}>Loading...</p>
       }
     </div>
   );

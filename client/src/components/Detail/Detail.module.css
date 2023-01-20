@@ -66,3 +66,10 @@
     color: #f5efe8;
     margin-right: 10px;
 }
+
+.divLoading {
+    color: #f5efe8;
+    font-family: 'Noto Serif', serif;
+    font-size: 20px;
+    font-weight: 600;    
+}

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCountries, createActivity } from '../../redux/actions';
+import { getCountries, createActivity, getActivities } from '../../redux/actions';
 import ActivityStyles from './CreateActivity.module.css';
 
 
@@ -25,6 +25,7 @@ const validate = (input) => {
 const CreateActivity = () => {
     const dispatch = useDispatch();
     const countriesName = useSelector((state) => state.countries);
+    const theActivities = useSelector((state) => state.activities);
 
     const [input, setInput] = useState({
         name: '', 
@@ -33,9 +34,9 @@ const CreateActivity = () => {
         season: '',
         countryId: []
     });
-
+    
     const [errors, setErrors] = useState({});
-
+    
     const handleChange = (e) => {
         setInput({
             ...input,
@@ -46,7 +47,7 @@ const CreateActivity = () => {
             [e.target.name]: e.target.value
         }))
     }
-
+    
     const handleSelectDificulty = (e) => {
         setInput({
             ...input,
@@ -57,7 +58,7 @@ const CreateActivity = () => {
             difficulty: e.target.value
         }))
     }
-
+    
     const handleSelectSeason = (e) => {
         setInput({
             ...input,
@@ -68,7 +69,7 @@ const CreateActivity = () => {
             season: e.target.value
         }))
     }
-
+    
     const handleSelectCountries = (e) => {
         setInput({
             ...input,
@@ -79,12 +80,15 @@ const CreateActivity = () => {
             countryId: [...input.countryId, e.target.value]
         }))
     }    
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors(validate(input));
         const errorSave = validate(input);
-        if (Object.values(errorSave).length !== 0) alert("You must fullfill all the required conditions");
+        const existName = theActivities.find(e => e.toLowerCase() === input.name.toLowerCase()) ? 1 : 0;
+        
+        if (existName === 1) alert("Activity name already exists");
+        else if (Object.values(errorSave).length !== 0) alert("You must fullfill all the required conditions");
         else {
             dispatch(createActivity(input))
             alert('Activity created')
@@ -97,9 +101,13 @@ const CreateActivity = () => {
             })
         }
     }
-
+    
     useEffect(() => {
         dispatch(getCountries())
+    }, [dispatch]);
+    
+    useEffect(() => {
+        dispatch(getActivities())
     }, [dispatch]);
 
     return (

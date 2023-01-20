@@ -11,6 +11,9 @@ import { getActivities, getCountries, ordeByName, orderByPopulation, filterByCon
 import linkedin from '../../img/linkedin.png';
 import github from '../../img/github.png';
 
+const reload = () => {
+    window.location.reload(false);
+}
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -28,7 +31,7 @@ const Home = () => {
     const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry - 1);
     
     const [order, setOrder] = useState("");
-
+    
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber);
         if (pageNumber === 1) setCountriesPerPage(9);
@@ -43,16 +46,15 @@ const Home = () => {
         dispatch(getActivities())
     }, [dispatch]);
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        dispatch(getCountries());
-    }
-
     const handleFilterContinent = (e) => {
+        setCurrentPage(1);
+        setCountriesPerPage(9);
         dispatch(filterByContinent(e.target.value));
     }
 
     const handleFilterActivity = (e) => {
+        setCurrentPage(1);
+        setCountriesPerPage(9);
         dispatch(filterByActivity(e.target.value));
     }
 
@@ -69,6 +71,7 @@ const Home = () => {
         setCurrentPage(1);
         setOrder(`Ordenado ${e.target.value}`)
     }
+
 
     return (
         <div>
@@ -88,7 +91,7 @@ const Home = () => {
                         <Link to= '/createActivity'>
                             <button className={HomeStyles.button} id= 'create'>Create Activity</button>
                         </Link>
-                        <button className={HomeStyles.button} onClick={(e) => handleClick(e)} id= 'reload'>Reload</button>
+                        <button className={HomeStyles.button} onClick={reload} id= 'reload'>Reload</button>
                     </div>
                     <div className={HomeStyles.filters}>
                         <h3>Filters</h3>
@@ -157,7 +160,6 @@ const Home = () => {
             <div className={HomeStyles.paginado}>
                 <Paginado
                 countriesPerPage={countriesPageLast}
-                // countriesPerPage={countriesPerPage}
                 allCountries={allCountries.length}
                 paginado={paginado}
                 countriesPageOne={countriesPageOne}
@@ -189,14 +191,3 @@ const Home = () => {
 }
 
 export default Home;
-
-
-
-
-
-
-
-
-
-
-
