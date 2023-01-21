@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCountries, createActivity, getActivities } from '../../redux/actions';
+import { getCountries, createActivity, getActivities, deleteActivities } from '../../redux/actions';
 import ActivityStyles from './CreateActivity.module.css';
 
 
@@ -99,15 +99,39 @@ const CreateActivity = () => {
                 season: '',
                 countryId: []
             })
+            reload();
+        }
+    }
+
+    //------------------------Delete Activity------------------------
+    const [delAct, setDelAct] = useState('');
+
+    const handleSelectDelete = (e) => {
+        setDelAct(e.target.value)
+    }
+
+    const handleSubmitDelete = (e) => {
+        e.preventDefault();
+        if (delAct.length <= 0) alert("You must select an activity to delete");
+        else {
+            dispatch(deleteActivities(delAct));
+            alert('Deleted activity')
+            setDelAct('');
+            reload();
         }
     }
     
+    //------------------------useEffect------------------------
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch]);
     
     useEffect(() => {
         dispatch(getActivities())
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(deleteActivities())
     }, [dispatch]);
 
     return (
@@ -117,6 +141,8 @@ const CreateActivity = () => {
                     <button className={ActivityStyles.button} id='detailHome'>Home</button>
                 </Link>
             </div>
+
+            {/* -----------------------Create activity sector----------------------- */}
             <div className={ActivityStyles.formConteiner}>
                 <h1>Create your Activity</h1>
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -204,6 +230,35 @@ const CreateActivity = () => {
                     </div>
                 </form>
             </div>
+
+            {/* -----------------------Delete activity sector----------------------- */}
+            <div className={ActivityStyles.formConteinerDelete}>
+                <h1>Delete Activity</h1>
+                <form onSubmit={(e) => handleSubmitDelete(e)}>
+                    <div className={ActivityStyles.formDelete}>
+                        <div>
+                            <div className={ActivityStyles.divSelect}>
+                                <select onChange={handleSelectDelete}>
+                                    <option value="theActivities" disabled selected>Activity</option>
+                                    {theActivities && theActivities.map((e) => {
+                                        return (
+                                            <option value={e}>{e}</option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p>Activity to delete: {delAct}</p>
+
+                    <div>
+                        <button className={ActivityStyles.buttonCreate} type="submit">Delete Activity</button>
+                    </div>
+                </form>
+            </div>
+
+            {/* -----------------------Reload sector----------------------- */}
             <div>
                 <button className={ActivityStyles.button} onClick={reload}>Reload</button>
             </div>

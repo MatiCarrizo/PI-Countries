@@ -42,7 +42,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
-    height: 200px;
+    height: 150px;
 }
 
 .errorDetail {
@@ -147,4 +147,23 @@
 
 .nameDetail {
     width: 350px;
+}
+
+.formConteinerDelete {
+    border-radius: 15px;
+    background-color: #f4e2cb86;
+    color: rgb(51, 21, 21);
+    font-family: 'Noto Serif', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.formDelete {
+    display: flex;
+    align-items: center;
+    flex-direction: center;
+    justify-content: center;
+    margin: 1px;
+    height: 60px;
 }

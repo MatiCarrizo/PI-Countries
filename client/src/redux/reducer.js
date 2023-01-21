@@ -1,5 +1,6 @@
 import {
     GET_ACTIVITIES,
+    DELETE_ACTIVITIES,
     GET_COUNTRIES,
     GET_COUNTRY_DETAIL,
     CREATE_ACTIVITY,
@@ -43,6 +44,13 @@ const rootReducer = (state = initialState, action) => {
         // -------------------------------------------------------------------------------
 
         case CREATE_ACTIVITY:
+            return {
+                ...state,
+            }
+        
+        // -------------------------------------------------------------------------------
+
+        case DELETE_ACTIVITIES:
             return {
                 ...state,
             }

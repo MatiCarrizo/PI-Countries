@@ -30,3 +30,14 @@ router.get('/', async (req, res) => {
         return res.status(400).send(error);
     }
 })
+
+router.delete('/', async (req, res) => {
+    const {name} = req.query;
+    const deletedActivity = await Activity.destroy({where: {name}})
+    try {
+        if (deletedActivity) res.status(200).json({message: 'Deleted activity'})
+        else res.status(400).json({message: 'Activity not found'})
+    } catch (error) {
+        res.status(404).json({message: 'Error deleting activity'})
+    }
+})

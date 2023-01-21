@@ -2,6 +2,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:3001';
 
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
+export const DELETE_ACTIVITIES = 'DELETE_ACTIVITIES';
 export const GET_COUNTRIES = 'GET_COUNTRIES';
 export const GET_COUNTRY_DETAIL = 'GET_COUNTRY_DETAIL';
 export const CREATE_ACTIVITY = 'CREATE_ACTIVITY';
@@ -15,6 +16,17 @@ export const getActivities = () => {
     return async (dispatch) => {
         let info = await axios.get('/activities');
         return dispatch({ type: GET_ACTIVITIES, payload: info.data });
+    }
+}
+
+export const deleteActivities = (payload) => {
+    return async (dispatch) => {
+        try {
+            let info = await axios.delete(`/activities?name=${payload}`);
+            return dispatch({ type: 'DELETE_ACTIVITIES', payload: info.data })
+        } catch (error) {
+            console.log('Error al borrar la actividad', error);
+        }
     }
 }
 
